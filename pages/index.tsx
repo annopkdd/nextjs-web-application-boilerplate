@@ -65,6 +65,7 @@ export default function Home() {
               Show Failure Snackbar
             </Button>
           </div>
+
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Button</span>
             <div className="flex flex-row gap-4">
@@ -77,6 +78,66 @@ export default function Home() {
               <Button color="purple">Purple</Button>
             </div>
           </div>
+
+          <div className="flex flex-col bg-white shadow-md p-4 gap-4">
+            <span className="font-bold">Typography</span>
+            <div className="flex flex-col gap-4">
+              <div className="flex flex-row gap-4">
+                <span className="text-xs text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-sm text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-base text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-lg text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-2xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-3xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-4xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-5xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-6xl text-gray-900 dark:text-white">
+                  Aa
+                </span>
+                <span className="text-gray-900 text-7xl dark:text-white">
+                  Aa
+                </span>
+              </div>
+
+              <div className="flex flex-row gap-4">
+                <span className="text-blue-600">
+                  This text is in the blue color.
+                </span>
+                <span className="text-green-500">
+                  This text is in the green color.
+                </span>
+                <span className="text-red-600">
+                  This text is in the red color.
+                </span>
+                <span className="text-purple-600">
+                  This text is in the purple color.
+                </span>
+                <span className="text-teal-600">
+                  This text is in the teal color.
+                </span>
+              </div>
+            </div>
+          </div>
+
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Input</span>
             <TextInput type="text" label="First name" placeholder="John" />
