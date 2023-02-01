@@ -9,6 +9,7 @@ import {
   CustomModal,
   Dropdown,
   Image,
+  RadioButton,
   TextInput,
 } from "@/components/common";
 import { Images } from "@/constants";
@@ -136,7 +137,7 @@ export default function Home() {
               </Button>
               <CustomModal open={isShowModal1}>
                 <div onClick={() => setIsShowModal1(false)}>
-                  <span>Hello from Modal 1</span>
+                  <span>Close Modal 1</span>
                 </div>
               </CustomModal>
               <BottomSheetModal
@@ -164,6 +165,17 @@ export default function Home() {
               <Checkbox checked label="Checkbox 3" />
               <Checkbox checked={false} label="Checkbox 4" disabled />
               <Checkbox checked label="Checkbox 5" disabled />
+            </div>
+          </div>
+
+          <div className="flex flex-col bg-white shadow-md p-4 gap-4">
+            <span className="font-bold">Radio</span>
+            <div className="flex flex-row gap-4">
+              <RadioButton checked={false} />
+              <RadioButton checked />
+              <RadioButton checked label="Radio Button 3" />
+              <RadioButton checked={false} label="Radio Button 4" disabled />
+              <RadioButton checked label="Radio Button 5" disabled />
             </div>
           </div>
         </div>

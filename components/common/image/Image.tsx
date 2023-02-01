@@ -7,9 +7,14 @@ interface IImage
   > {}
 
 const Image: React.FC<IImage> = (props) => {
-  const { className, ...rest } = props;
+  const { width, height, ...rest } = props;
 
-  return <img {...rest} />;
+  return (
+    <img
+      {...rest}
+      style={{ width: width || "auto", height: height || "auto" }}
+    />
+  );
 };
 
 export default Image;

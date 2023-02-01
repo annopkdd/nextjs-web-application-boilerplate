@@ -1,3 +1,4 @@
 export const Icons = {
-  plusIcon: "/assets/images/icons/plus-icon.png",
+  plusIcon: "/assets/icons/plus-icon.png",
+  closeIcon: "/assets/icons/close_icon.svg",
 };

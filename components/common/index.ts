@@ -5,3 +5,4 @@ export * from "./image";
 export * from "./dropdown";
 export * from "./modal";
 export * from "./checkbox";
+export * from "./radio";
