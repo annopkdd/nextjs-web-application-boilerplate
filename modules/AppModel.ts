@@ -1,9 +1,9 @@
 import { types } from "mobx-state-tree";
+import { toast, TypeOptions } from "react-toastify";
 import { customtypes } from "utils";
 
 export const SnackBarModel = types
   .model("SnackBarModel", {
-    isShowSnackBar: customtypes.optional(types.boolean, false),
     snackBarMessage: customtypes.optional(types.string, ""),
     snackBarType: customtypes.optional(types.string, ""),
   })
@@ -11,18 +11,18 @@ export const SnackBarModel = types
     //
   }))
   .actions((self) => ({
-    showSnackBar: (
-      snackBarMessage: string,
-      snackBarType: "failure" | "gray" | "info" | "success" | "warning"
-    ) => {
-      if (snackBarMessage) {
-        self.isShowSnackBar = true;
-        self.snackBarMessage = snackBarMessage;
-        self.snackBarType = snackBarType;
-      }
-    },
-    hideSnackBar: () => {
-      self.isShowSnackBar = false;
+    showSnackBar: (snackBarMessage: string, snackBarType: TypeOptions) => {
+      toast(snackBarMessage, {
+        type: snackBarType,
+        position: "bottom-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     },
   }));
 
