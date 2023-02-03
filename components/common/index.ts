@@ -6,3 +6,5 @@ export * from "./dropdown";
 export * from "./modal";
 export * from "./checkbox";
 export * from "./radio";
+export * from "./divider";
+export * from "./stepper";

@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import dayjs, { Dayjs } from "dayjs";
 import { appStoreContext } from "@/RootStore";
 import { IAppModel } from "@/modules/AppModel";
 import {
@@ -7,6 +8,7 @@ import {
   Button,
   Checkbox,
   CustomModal,
+  DatePicker,
   Dropdown,
   Image,
   RadioButton,
@@ -18,6 +20,7 @@ export default function Home() {
   const appStore: IAppModel = React.useContext(appStoreContext);
 
   const [dropdownValue, setDropdownValue] = React.useState<number>(0);
+  const [dateInputValue, setDateInputValue] = React.useState<Dayjs>(null);
   const [isShowModal1, setIsShowModal1] = React.useState<boolean>(false);
   const [isShowBottomSheetModal, setIsShowBottomSheetModal] =
     React.useState<boolean>(false);
@@ -39,43 +42,38 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <div className="flex flex-col items-start bg-white shadow-md p-4 gap-4">
             <span className="font-bold">App State</span>
-            <Button onClick={showAppLoading}>Show App Modal</Button>
+            <Button title="Show App Modal" onClick={showAppLoading} />
             <Button
+              title="Show Success Snackbar"
               color="success"
               onClick={() =>
                 appStore.snackbarMessage.showSnackBar("Success!", "success")
               }
-            >
-              Show Success Snackbar
-            </Button>
+            />
             <Button
+              title="Show Warning Snackbar"
               color="warning"
               onClick={() =>
                 appStore.snackbarMessage.showSnackBar("Warning!", "warning")
               }
-            >
-              Show Warning Snackbar
-            </Button>
+            />
+
             <Button
+              title="Show Failure Snackbar"
               color="failure"
               onClick={() =>
-                appStore.snackbarMessage.showSnackBar("Failure!", "failure")
+                appStore.snackbarMessage.showSnackBar("Failure!", "error")
               }
-            >
-              Show Failure Snackbar
-            </Button>
+            />
           </div>
 
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Button</span>
             <div className="flex flex-row gap-4">
-              <Button>Default</Button>
-              <Button color="gray">Gray</Button>
-              <Button color="dark">Dark</Button>
-              <Button color="success">Success</Button>
-              <Button color="failure">Failure</Button>
-              <Button color="warning">Warning</Button>
-              <Button color="purple">Purple</Button>
+              <Button title="Default" />
+              <Button title="Success" color="success" />
+              <Button title="Failure" color="failure" />
+              <Button title="Warning" color="warning" />
             </div>
           </div>
 
@@ -140,25 +138,16 @@ export default function Home() {
 
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Input</span>
-            <TextInput type="text" label="First name" placeholder="John" />
+            <TextInput type="text" placeholder="First name" />
             <TextInput
               type="tel"
-              label="Phone Number"
-              placeholder="123-45-678"
+              placeholder="Phone Number"
               pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
             />
-            <TextInput label="Website" type="url" placeholder="flowbite.com" />
-            <TextInput label="Number" type="number" placeholder="number" />
-            <TextInput
-              label="Email"
-              type="email"
-              placeholder="john.doe@company.com"
-            />
-            <TextInput
-              label="Password"
-              type="password"
-              placeholder="•••••••••"
-            />
+            <TextInput placeholder="Website" type="url" />
+            <TextInput placeholder="Number" type="number" />
+            <TextInput placeholder="Email" type="email" />
+            <TextInput placeholder="Password" type="password" />
           </div>
 
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
@@ -177,6 +166,16 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
+            <span className="font-bold">DatePicker</span>
+            <div className="flex flex-row gap-4">
+              <DatePicker
+                date={dateInputValue}
+                onChange={(date) => setDateInputValue(date)}
+              />
+            </div>
+          </div>
+
+          <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Image</span>
             <div className="flex flex-row gap-4">
               <Image
@@ -190,12 +189,14 @@ export default function Home() {
           <div className="flex flex-col bg-white shadow-md p-4 gap-4">
             <span className="font-bold">Modal</span>
             <div className="flex flex-row gap-4">
-              <Button onClick={() => setIsShowModal1(true)}>
-                Open Modal 1
-              </Button>
-              <Button onClick={() => setIsShowBottomSheetModal(true)}>
-                Open Bottom Sheet Modal
-              </Button>
+              <Button
+                title=" Open Modal 1"
+                onClick={() => setIsShowModal1(true)}
+              />
+              <Button
+                title="Open Bottom Sheet Modal"
+                onClick={() => setIsShowBottomSheetModal(true)}
+              />
               <CustomModal open={isShowModal1}>
                 <div onClick={() => setIsShowModal1(false)}>
                   <span>Close Modal 1</span>
