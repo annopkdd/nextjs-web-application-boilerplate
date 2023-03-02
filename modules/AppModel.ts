@@ -37,8 +37,8 @@ export const AppModel = types
     //
   }))
   .actions((self) => ({
-    toggleLoading: () => {
-      self.loading = !self.loading;
+    setLoading: (loading: boolean) => {
+      self.loading = loading;
     },
     setField: (fieldName: string, value: any) => {
       // @ts-ignore

@@ -1,16 +1,17 @@
 import axios, { AxiosRequestConfig, Method } from "axios";
-import { IPaginationModel } from "modules/pagination/model";
-import { serializeToPaginationField } from "utils";
 import { authStore } from "../RootStore";
 
 export interface IRequestOptions {
   queries?: any;
   body?: {};
   formBody?: {};
-  pagination?: IPaginationModel;
   disabledBearerToken?: boolean;
 }
-const request = async (method: Method, endpoint: string, options?: IRequestOptions) => {
+const request = async (
+  method: Method,
+  endpoint: string,
+  options?: IRequestOptions
+) => {
   const headers: { [key: string]: string } = {
     Accept: "application/json",
     "Content-Type": "application/json",
@@ -21,9 +22,10 @@ const request = async (method: Method, endpoint: string, options?: IRequestOptio
   const requestOptions: AxiosRequestConfig = {
     method,
     baseURL: endpoint,
+    // @ts-ignore
     headers,
   };
-  // console.log("options", options);
+
   if (options && options.queries) {
     requestOptions.params = options.queries;
   } else if (options && options.formBody) {
@@ -47,28 +49,10 @@ const request = async (method: Method, endpoint: string, options?: IRequestOptio
     requestOptions.data = options.body;
   }
 
-  if (options?.pagination) {
-    if (method === "GET") {
-      requestOptions.params = { ...requestOptions.params, ...options.pagination.paginationParams };
-    } else {
-      requestOptions.data = { ...requestOptions.data, ...options.pagination.paginationBody };
-    }
-  }
-
   try {
     const res = await axios(requestOptions);
 
     // console.log("res", res);
-
-    if (options?.pagination) {
-      const paginateObject = serializeToPaginationField(res.data);
-      res.data.pagination = {
-        ...paginateObject,
-        pageNumber: options.pagination.pageNumber,
-        pageSize: options.pagination.pageSize,
-      };
-    }
-
     return res;
   } catch (e: any) {
     throw e;
