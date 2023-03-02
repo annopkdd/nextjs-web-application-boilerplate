@@ -1,10 +1,11 @@
-import toast, { Toaster } from "react-hot-toast";
+import React from "react";
+import { observer } from "mobx-react-lite";
 import { AppLoadingModal, AppSnackBarMessage } from "@/components/global";
-import { AppLayout } from "@/components/layouts";
+import { BottomNavigationLayout } from "@/components/layouts";
 import "@/styles/globals.css";
 
-export default function App({ Component, pageProps }: any) {
-  const Layout = Component.Layout || AppLayout;
+const App = ({ Component, pageProps }: any) => {
+  const Layout = Component.Layout || BottomNavigationLayout;
 
   return (
     <Layout>
@@ -13,4 +14,6 @@ export default function App({ Component, pageProps }: any) {
       <AppSnackBarMessage />
     </Layout>
   );
-}
+};
+
+export default observer(App);

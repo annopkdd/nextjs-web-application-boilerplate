@@ -1,20 +1,23 @@
 import React from "react";
-import Select, { components, SingleValue } from "react-select";
+import { IBaseComponent } from "@/types";
+import Select, { MenuPlacement, SingleValue } from "react-select";
 
-interface IOption {
+export interface IOption {
   label: string;
   value: any;
 }
 
-interface IDropdown {
+export interface IDropdown extends IBaseComponent {
   value: any;
   options: IOption[];
-  placholder?: string;
+  placeholder?: string;
+  disabled?: boolean;
   onChange: (value: any) => void;
+  menuPlacement?: MenuPlacement;
 }
 
 const Dropdown = (props: IDropdown) => {
-  const { value, options, placholder, onChange } = props;
+  const { value, options, onChange, disabled, ...rest } = props;
 
   const handleOnChange = (selectedValue: SingleValue<any>) => {
     if (onChange) {
@@ -31,19 +34,23 @@ const Dropdown = (props: IDropdown) => {
       isSearchable={false}
       onChange={handleOnChange}
       options={options}
-      components={{
-        Control: (props) => (
-          <components.Control
-            {...props}
-            className="h-[42px] rounded-lg cursor-pointer"
-          />
-        ),
-      }}
-      className="w-full"
       styles={{
         // @ts-ignore
         indicatorSeparator: () => {}, // removes the "stick"
+        control: (base) => ({
+          ...base,
+          borderRadius: "8px !important",
+          height: 42,
+        }),
+        placeholder: (base) => ({
+          ...base,
+          fontFamily: "IBMPlexSansThai-Regular",
+          fontSize: 12,
+          color: "#aeaeae",
+        }),
       }}
+      isDisabled={disabled}
+      {...rest}
     />
   );
 };

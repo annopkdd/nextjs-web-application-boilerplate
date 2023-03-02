@@ -9,7 +9,14 @@ interface ILoader {
 const Loader: React.FC<ILoader> = (props) => {
   const { size } = props;
 
-  return <Image src={Icons.spinner} />;
+  return (
+    <Image
+      src={Icons.spinner}
+      width={size || 35}
+      height={size || 35}
+      className="inline"
+    />
+  );
 };
 
 export default Loader;

@@ -1,11 +1,9 @@
 import React from "react";
-import { Images } from "@/constants";
 import { CSSObject } from "@/types";
 import { IAuthModel } from "@/modules/auth/model";
 import { authStoreContext } from "@/RootStore";
-import Image from "next/image";
 
-const AuthLayout: React.FC<any> = ({ children }) => {
+const FullScreenLayout: React.FC<any> = ({ children }) => {
   const authStore: IAuthModel = React.useContext(authStoreContext);
 
   React.useEffect(() => {
@@ -19,10 +17,7 @@ const AuthLayout: React.FC<any> = ({ children }) => {
   });
 
   return (
-    <div className="overflow-y-auto" style={styles.container}>
-      <div className="flex flex-row items-center">
-        <Image src={Images.appLogo} alt="logo" width={50} height={50} />
-      </div>
+    <div className="overflow-hidden" style={styles.container}>
       {children}
     </div>
   );
@@ -34,4 +29,4 @@ const styles: CSSObject = {
   },
 };
 
-export default AuthLayout;
+export default FullScreenLayout;
