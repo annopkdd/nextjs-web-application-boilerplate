@@ -37,9 +37,7 @@ const BottomNavigationLayout: React.FC<IBottomNavigationLayout> = (props) => {
 
   const [routePathName, setRoutePathName] = React.useState("");
 
-  React.useEffect(() => {
-    setRoutePathName(router.pathname);
-  }, [router.pathname]);
+  React.useEffect(() => setRoutePathName(router.pathname), [router.pathname]);
 
   return (
     <div
