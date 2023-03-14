@@ -21,7 +21,13 @@ const BottombarMenu = (props: {
       onClick={() => router.push(props.to)}
       className="w-[44px] flex flex-col items-center cursor-pointer"
     >
-      <Image src={props.icon} width={20} height={20} className="mb-1" />
+      <Image
+        src={props.icon}
+        width={20}
+        height={20}
+        alt="bottom-bar-icon"
+        className="mb-1"
+      />
       {props.active ? (
         <div className="w-[10px] h-[10px] rounded-full bg-primary mt-[2px]" />
       ) : (
