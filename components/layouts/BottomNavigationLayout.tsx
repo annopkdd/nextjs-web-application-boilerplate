@@ -49,7 +49,6 @@ const BottomNavigationLayout: React.FC<IBottomNavigationLayout> = (props) => {
       <div className="flex-1 overflow-y-auto overflow-x-hidden">
         {props.children}
       </div>
-
       {/* Bottom Bar */}
       <div className="relative bg-white h-[85px] border-t border-t-outline">
         <div className="flex flex-row justify-around mt-[7px] px-1">
